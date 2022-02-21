@@ -1,0 +1,32 @@
+﻿@using PersonelMVCUI.Models.EntityFramework
+@model List<Departman>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<a class="btn btn-success" href="/Departman/Yeni">Yeni Departman</a>
+
+<h2>Departman Listesi</h2>
+
+    <table class="table table-bordered" id="tblDepartmanlar">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Ad</th>
+                <th>Güncelle</th>
+                <th>Sil</th>
+            </tr>
+        </thead>
+        <tbody>
+          @foreach (var departman in Model)
+           {
+            <tr>
+                <td>@departman.id</td>
+                <td>@departman.Ad</td>
+                <td><a class="btn btn-primary" href="/Departman/Guncelle/@departman.id">Guncelle</a></td>
+                <td><a class="btn btn-warning btnDepartmanSil" data-id="@departman.id" >Sil</a></td>
+            </tr>
+           }
+        </tbody>
+    </table>
